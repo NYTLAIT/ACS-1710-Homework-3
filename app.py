@@ -55,11 +55,20 @@ def compliments():
 @app.route('/compliments_results')
 def compliments_results():
     """Show the user some compliments."""
-    context = {
-        # TODO: Enter your context variables here.
-    }
+    name = request.args.get('users_name')    
+    yesorno = request.args.get('wants_compliments')
+    number = int(request.args.get('num_compliments'))
+    
+    if yesorno == "yes":
+        context = {
+            # TODO: Enter your context variables here.
+            "name": name,
+            "compliments": random.sample(list_of_compliments, number)
+        }
 
-    return render_template('compliments_results.html', **context)
+        return render_template('compliments_results.html', **context)
+    else:
+        return f'Have a good day {name}!'
 
 
 ################################################################################
