@@ -8,13 +8,12 @@ Compliments Results
 
 <!-- Your HTML code goes here! -->
 Hello, {{name}}!
-
+<br>
 You are:
-{% for item in %}
 <ul>
-    {{compliments}}
+    {% for item in compliments%}
+        <li>{{item}}</li>
+    {% endfor %}
 </ul>
-
-
 
 {% endblock %}
