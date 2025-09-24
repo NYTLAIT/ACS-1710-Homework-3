@@ -87,11 +87,17 @@ animal_to_fact = {
 def animal_facts():
     """Show a form to choose an animal and receive facts."""
     # TODO: Collect the form data and save as variables
+    animal = request.args.getlist('animal')
+
+    animal_fact = []
+    for key in animal:
+        animal_fact.append(animal_to_fact[key])
+        
 
     context = {
         # TODO: Enter your context variables here for:
         'animal_to_fact': animal_to_fact,
-        'animal_facts': animal_to_fact.getsist(request.args.getlist('animal'), "")
+        'animal_fact': animal_fact
         # - the list of all animals (get from animal_to_fact)
         # - the chosen animal fact (may be None if the user hasn't filled out the form yet)
     }

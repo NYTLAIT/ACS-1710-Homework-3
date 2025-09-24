@@ -11,13 +11,13 @@ Animal Facts
         <legend>Your Info:</legend>
 
             <p>Which animal do you want facts on?</p>
-                {% for key in animal_to_fact %}
-                    <label>
-                        <input type="checkbox" name="animal" value="{{key}}">{{key}}
-                        <br>
-                    </label>
-                {% endfor %}
-
+            {% for key in animal_to_fact %}
+                <label>
+                    <input type="checkbox" name="animal" value="{{key}}">{{key}}
+                    <br>
+                </label>
+            {% endfor %}
+            <br>
         <input type="submit" value="Get Fact!">
     </fieldset>
 </form>
@@ -29,10 +29,33 @@ Animal Facts
     <p>
         Your animal fact(s):
     </p>
-    {% for item in animal_facts %}
+    {% for item in animal_fact %}
         <p><em>{{item}}</em></p>
     {% endfor %}
 
 </section>
 
 {% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Grocery List
+        </title>
+    </head>
+    <body>
+        <form action="/cart" method="GET">
+            {% for item in shopping_cart %}
+                <label>
+                    {{name}}
+                    <input type="number" name="qty" value="{{qty}}">
+                </label>
+            {% endfor %}
+
+            <input type="text" name="name">
+            <input type="number" name="qty"> 
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
