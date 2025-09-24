@@ -9,15 +9,14 @@ Animal Facts
 <form action="/animal_facts" method="GET">
     <fieldset>
         <legend>Your Info:</legend>
-
-            <p>Which animal do you want facts on?</p>
-            {% for key in animal_to_fact %}
-                <label>
-                    <input type="checkbox" name="animal" value="{{key}}">{{key}}
-                    <br>
-                </label>
-            {% endfor %}
-            <br>
+        <p>Which animal do you want facts on?</p>
+        {% for key in animal_to_fact %}
+            <label>
+                <input type="checkbox" name="animal" value="{{key}}">{{key}}
+                <br>
+            </label>
+        {% endfor %}
+        <br>
         <input type="submit" value="Get Fact!">
     </fieldset>
 </form>
@@ -26,13 +25,14 @@ Animal Facts
     animal fact. -->
 
 <section id="form_results">
-    <p>
-        Your animal fact(s):
-    </p>
-    {% for item in animal_fact %}
-        <p><em>{{item}}</em></p>
-    {% endfor %}
-
+    {% if animal_fact %}    
+        <p>Your animal fact(s): </p>
+        {% for item in animal_fact %}
+            <p><em>{{item}}</em></p>
+        {% endfor %}
+    {% else %}
+        <p>Choose animal(s)!</p>
+    {% endif %}
 </section>
 
 {% endblock %}
