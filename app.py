@@ -224,9 +224,13 @@ def gif_search():
             {
                 # TODO: Add in key-value pairs for:
                 # - 'q': the search query
+                'q': request.form.get('search_query'),
                 # - 'key': the API key (defined above)
+                'key': API_KEY,
                 #- 'client_key': 'Your project name',
+                'client_key': 'ACS-1700-HW3',
                 # - 'limit': the number of GIFs requested
+                'limit': int(request.form.get('quantity'))
             })
 
         gifs = json.loads(response.content).get('results')
@@ -235,12 +239,12 @@ def gif_search():
             'gifs': gifs
         }
 
-         # Uncomment me to see the result JSON!
+        # Uncomment me to see the result JSON!
         # Look closely at the response! It's a list
         # list of data. The media property contains a 
         # list of media objects. Get the gif and use it's 
         # url in your template to display the gif. 
-        # pp.pprint(gifs)
+        pp.pprint(gifs)
 
         return render_template('gif_search.html', **context)
     else:
